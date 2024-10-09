@@ -8,16 +8,16 @@
 import SwiftUI
 import HealthKit
 
-struct DistanceWidget: View {
+struct FlightsWidget: View {
     @EnvironmentObject var viewModel : HomeViewModel
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(.brandBlue)
+                .fill(.brandGreen)
                 .frame(width: (screenWidth - 45) / 2, height: 175)
             
             VStack(alignment: .leading){
-                Text("Distance")
+                Text("Flights")
                     .foregroundStyle(.brandCharcoal)
                     .font(.callout)
                     .fontWeight(.semibold)
@@ -25,17 +25,16 @@ struct DistanceWidget: View {
                 Spacer()
                 
                 HStack(alignment: .center){
-                    Text("\(String(format: "%.1f", viewModel.distance))")
+                    Text("\(String(viewModel.flightsClimbed))")
                         .foregroundStyle(.brandCharcoal)
                         .font(.system(size: 70, weight: .semibold))
-                    Text("km")
                 }
                 
                 Spacer()
                 
                 HStack{
                     Spacer()
-                    Image(systemName: "figure.walk").font(.system(size: 25))
+                    Image(systemName: "figure.stairs").font(.system(size: 25))
                 }
             }
             .padding()
@@ -45,5 +44,6 @@ struct DistanceWidget: View {
 }
 
 #Preview {
-    DistanceWidget().environmentObject(HomeViewModel(healthStore: HKHealthStore()))
+    FlightsWidget().environmentObject(HomeViewModel(healthStore: HKHealthStore()))
 }
+

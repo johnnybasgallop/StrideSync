@@ -33,8 +33,8 @@ struct StepsWidget: View {
                 }
             }
             .frame(height: 125)
-            .padding()
-        }.padding()
+            .padding(.horizontal)
+        }.padding(.horizontal)
     }
 }
 
