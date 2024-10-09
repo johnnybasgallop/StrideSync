@@ -18,11 +18,11 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
             }
-            .listRowBackground(Color.clear) // Make each row's background transparent
-            .listRowInsets(EdgeInsets()) // Remove default List insets to get full-width VStack
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets())
         }
-        .scrollContentBackground(.hidden) // Hide the overall List background
-        .refreshable { // Use refreshable with List
+        .scrollContentBackground(.hidden)
+        .refreshable {
             viewModel.fetchDailyData()
         }
         .onAppear {

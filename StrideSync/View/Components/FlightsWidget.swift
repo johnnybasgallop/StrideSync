@@ -1,10 +1,3 @@
-//
-//  DistanceWidget.swift
-//  StrideSync
-//
-//  Created by johnny basgallop on 08/10/2024.
-//
-
 import SwiftUI
 import HealthKit
 
