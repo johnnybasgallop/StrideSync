@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CA4312262CB54F7C0070F9B4 /* DistanceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */; };
 		CA4312282CB6C7180070F9B4 /* FlightsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */; };
+		CA43122A2CB721C60070F9B4 /* StepComparisonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */; };
 		CA97A88C2CB41F5100A36B70 /* StrideSyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97A88B2CB41F5100A36B70 /* StrideSyncApp.swift */; };
 		CA97A88E2CB41F5100A36B70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97A88D2CB41F5100A36B70 /* ContentView.swift */; };
 		CA97A8902CB41F5200A36B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA97A88F2CB41F5200A36B70 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceWidget.swift; sourceTree = "<group>"; };
 		CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsWidget.swift; sourceTree = "<group>"; };
+		CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepComparisonWidget.swift; sourceTree = "<group>"; };
 		CA97A8882CB41F5100A36B70 /* StrideSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrideSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA97A88B2CB41F5100A36B70 /* StrideSyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrideSyncApp.swift; sourceTree = "<group>"; };
 		CA97A88D2CB41F5100A36B70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				CA97A8A12CB453A000A36B70 /* StepsWidget.swift */,
 				CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */,
 				CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */,
+				CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				CA97A8A22CB453A000A36B70 /* StepsWidget.swift in Sources */,
 				CA4312262CB54F7C0070F9B4 /* DistanceWidget.swift in Sources */,
 				CA97A88E2CB41F5100A36B70 /* ContentView.swift in Sources */,
+				CA43122A2CB721C60070F9B4 /* StepComparisonWidget.swift in Sources */,
 				CA97A88C2CB41F5100A36B70 /* StrideSyncApp.swift in Sources */,
 				CA4312282CB6C7180070F9B4 /* FlightsWidget.swift in Sources */,
 				CA97A8A02CB4522D00A36B70 /* HomeViewModel.swift in Sources */,

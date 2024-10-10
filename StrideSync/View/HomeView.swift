@@ -17,10 +17,14 @@ struct HomeView: View {
                     FlightsWidget().environmentObject(viewModel)
                 }
                 .padding(.horizontal)
+                
+                StepComparisonView().environmentObject(viewModel)
             }
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets())
+            
         }
+        .frame(width: screenWidth)
         .scrollContentBackground(.hidden)
         .refreshable {
             viewModel.fetchDailyData()

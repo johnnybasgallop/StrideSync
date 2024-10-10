@@ -8,65 +8,45 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     
     /// The total number of steps taken by the user today.
-    ///
-    /// This property is updated asynchronously by querying HealthKit for the cumulative step count data since the start of the day.
     @Published var steps: Int = 0
     
     /// The total distance walked or run by the user today, in kilometers.
-    ///
-    /// This property represents the cumulative distance covered by the user in kilometers, calculated from HealthKit's distance walking/running data type. It is rounded down to one decimal place for display purposes.
     @Published var distance: Double = 0.0
     
     /// The total number of flights of stairs climbed by the user today.
-    ///
-    /// This property is updated based on HealthKit's `flightsClimbed` data and is calculated as the cumulative number of flights of stairs ascended since the start of the day.
     @Published var flightsClimbed: Int = 0
     
+    /// The average number of steps taken by the user per day.
+    @Published var averageSteps: Int = 0
+    
     /// The HealthKit store used to query and retrieve health data.
-    ///
-    /// This property is initialized with a default `HKHealthStore` instance and is used throughout the view model to request authorization and execute HealthKit queries.
     var healthStore = HKHealthStore()
     
-    /// Initializes the `HomeViewModel` with an optional `HKHealthStore` instance.
-    ///
-    /// - Parameter healthStore: The HealthKit store instance. Defaults to a new `HKHealthStore` if not provided.
-    ///
-    /// Upon initialization, this method calls `fetchDailyData()` to start fetching health data immediately.
     init(healthStore: HKHealthStore = HKHealthStore()) {
         self.healthStore = healthStore
         fetchDailyData()
     }
     
-    /// Requests authorization and retrieves daily health data for steps, distance, and flights climbed.
-    ///
-    /// This method first checks if HealthKit data is available on the device. If so, it requests read permissions for the following HealthKit data types:
-    /// - `stepCount`: The cumulative step count for today.
-    /// - `distanceWalkingRunning`: The total distance walked or run today.
-    /// - `flightsClimbed`: The cumulative number of flights of stairs climbed today.
-    ///
-    /// Once authorization is granted, the method calls the internal functions `getSteps()`, `getDistance()`, and `getFlightsClimbed()` to retrieve the respective data.
+    /// Requests authorization and retrieves daily health data for steps, distance, flights climbed, and average steps.
     func fetchDailyData() {
         let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let distanceType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
         let flightsType = HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!
         
-        // Check if HealthKit is available on this device
         guard HKHealthStore.isHealthDataAvailable() else { return }
         
-        // Request authorization for step count, distance, and flights climbed
         let readTypes: Set<HKObjectType> = [stepType, distanceType, flightsType]
         healthStore.requestAuthorization(toShare: nil, read: readTypes) { success, _ in
             if success {
                 self.getSteps()
                 self.getDistance()
                 self.getFlightsClimbed()
+                self.getAverageSteps() // Fetch the average steps as well
             }
         }
     }
     
     /// Retrieves the cumulative step count for today from HealthKit.
-    ///
-    /// This method queries HealthKit for the total step count data since the start of the day. It uses a `HKStatisticsQuery` to calculate the cumulative sum of steps and updates the `steps` property on the main thread.
     func getSteps() {
         let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let now = Date()
@@ -85,9 +65,6 @@ class HomeViewModel: ObservableObject {
     }
     
     /// Retrieves the total distance walked or run for today in kilometers.
-    ///
-    /// This method queries HealthKit for the total distance data since the start of the day using `HKStatisticsQuery`.
-    /// The result is converted from meters to kilometers and rounded down to one decimal place for display.
     func getDistance() {
         let distanceType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
         let now = Date()
@@ -107,8 +84,6 @@ class HomeViewModel: ObservableObject {
     }
     
     /// Retrieves the number of flights of stairs climbed today.
-    ///
-    /// This method queries HealthKit for the total number of flights climbed since the start of the day using `HKStatisticsQuery`. The result is updated on the main thread and stored in the `flightsClimbed` property.
     func getFlightsClimbed() {
         let flightsType = HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!
         let now = Date()
@@ -120,6 +95,47 @@ class HomeViewModel: ObservableObject {
             guard let result = result, let sum = result.sumQuantity() else { return }
             DispatchQueue.main.async {
                 self.flightsClimbed = Int(sum.doubleValue(for: HKUnit.count()))
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    /// Retrieves the daily average steps for the past week.
+    ///
+    /// This function uses `HKStatisticsCollectionQuery` to collect step count data for each day over the past week.
+    /// It calculates the daily average steps and updates the `averageSteps` property.
+    func getAverageSteps() {
+        let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        
+        let calendar = Calendar.current
+        let now = Date()
+        let startDate = calendar.date(byAdding: .day, value: -7, to: now)!
+        
+        var interval = DateComponents()
+        interval.day = 1
+        
+        let query = HKStatisticsCollectionQuery(
+            quantityType: stepType,
+            quantitySamplePredicate: nil,
+            options: .cumulativeSum,
+            anchorDate: startDate,
+            intervalComponents: interval
+        )
+        
+        query.initialResultsHandler = { _, collection, _ in
+            var totalSteps: Int = 0
+            var dayCount: Int = 0
+            
+            collection?.enumerateStatistics(from: startDate, to: now) { statistics, _ in
+                if let sum = statistics.sumQuantity() {
+                    totalSteps += Int(sum.doubleValue(for: HKUnit.count()))
+                    dayCount += 1
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.averageSteps = dayCount > 0 ? totalSteps / dayCount : 0
             }
         }
         
