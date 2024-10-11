@@ -12,10 +12,10 @@ struct StepComparisonView: View {
             
             VStack(alignment: .leading, spacing: 15){
                 Text("Current vs Average daily")
-                    .font(.title2)
                     .foregroundStyle(.white)
-                    .fontWeight(.bold)
-                // Current Steps
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    
                 VStack(alignment: .leading, spacing: 10){
                     HStack {
                         Text("\(viewModel.steps.formatted())")
@@ -30,11 +30,11 @@ struct StepComparisonView: View {
                         .frame(height: 10)
                         .cornerRadius(5)
                         .frame(width: barWidth(for: viewModel.steps))
-                }
+                }.padding(.leading, 5)
                 
                 VStack(alignment: .leading, spacing: 10){
                     HStack {
-                        Text("\(viewModel.averageSteps.formatted())")
+                        Text("\(viewModel.averageStepsMonth.formatted())")
                             .font(.system(size: 36, weight: .bold))
                             .foregroundColor(.white)
                         Text("steps")
@@ -45,8 +45,8 @@ struct StepComparisonView: View {
                         .fill(.brandBlue)
                         .frame(height: 10)
                         .cornerRadius(5)
-                        .frame(width: barWidth(for: viewModel.averageSteps))
-                }
+                        .frame(width: barWidth(for: viewModel.averageStepsMonth))
+                }.padding(.leading, 5)
                 
             }
             .padding(.horizontal)
@@ -56,11 +56,9 @@ struct StepComparisonView: View {
        
         
     }
-    
-    // Calculate the width of the bar based on the number of steps.
+
     func barWidth(for steps: Int) -> CGFloat {
-        // Assuming a maximum width of 300 for the largest value.
-        let maxSteps = max(viewModel.steps, viewModel.averageSteps)
+        let maxSteps = max(viewModel.steps, viewModel.averageStepsMonth)
         let maxWidth: CGFloat = 300
         return CGFloat(steps) / CGFloat(maxSteps) * maxWidth
     }

@@ -6,7 +6,6 @@ import SwiftUI
 ///
 /// This class is responsible for interacting with HealthKit to fetch the daily step count, walking/running distance, and the number of flights climbed. It also provides a way to store this data and update SwiftUI views using `@Published` properties.
 class HomeViewModel: ObservableObject {
-    
     /// The total number of steps taken by the user today.
     @Published var steps: Int = 0
     
@@ -17,14 +16,50 @@ class HomeViewModel: ObservableObject {
     @Published var flightsClimbed: Int = 0
     
     /// The average number of steps taken by the user per day.
-    @Published var averageSteps: Int = 0
+    @Published var averageStepsWeek: Int = 0
+    @Published var averageStepsMonth: Int = 0
+    @Published var averageStepsYear: Int = 0
+    
+    /// Step data for the last 7 days.
+    @Published var weekData: [StepEntry] = []
+    
+    /// Step data for the last 30 days (each day).
+    @Published var monthData: [StepEntry] = []
+    
+    /// Step data for the last year (each month).
+    @Published var yearData: [StepEntry] = []
     
     /// The HealthKit store used to query and retrieve health data.
     var healthStore = HKHealthStore()
     
     init(healthStore: HKHealthStore = HKHealthStore()) {
         self.healthStore = healthStore
-        fetchDailyData()
+    }
+    
+    ///Fetches all of the initial data needed, including graph data.
+    func fetchAllData(){
+        self.fetchDailyData()
+        
+        self.fetchData(for: .week){steps in
+            self.weekData = steps
+        }
+        self.getAverageSteps(for: .week){average in
+            self.averageStepsWeek = average
+        }
+        
+        self.fetchData(for: .month){steps in
+            self.monthData = steps
+        }
+        self.getAverageSteps(for: .month){average in
+            self.averageStepsMonth = average
+        }
+        
+        self.fetchData(for: .year) { steps in
+            self.yearData = steps
+        }
+        self.getAverageSteps(for: .year){average in
+            self.averageStepsYear = average
+        }
     }
     
     /// Requests authorization and retrieves daily health data for steps, distance, flights climbed, and average steps.
@@ -41,7 +76,6 @@ class HomeViewModel: ObservableObject {
                 self.getSteps()
                 self.getDistance()
                 self.getFlightsClimbed()
-                self.getAverageSteps() // Fetch the average steps as well
             }
         }
     }
@@ -79,7 +113,7 @@ class HomeViewModel: ObservableObject {
                 self.distance = floor(distanceInKM * 10) / 10
             }
         }
-
+        
         healthStore.execute(query)
     }
     
@@ -101,20 +135,32 @@ class HomeViewModel: ObservableObject {
         healthStore.execute(query)
     }
     
-    /// Retrieves the daily average steps for the past week.
+    /// Retrieves the daily average steps for the given period (week, month, or year).
     ///
-    /// This function uses `HKStatisticsCollectionQuery` to collect step count data for each day over the past week.
-    /// It calculates the daily average steps and updates the `averageSteps` property.
-    func getAverageSteps() {
+    /// - Parameters:
+    ///   - period: The time period for which to calculate the average (e.g., `.week`, `.month`, `.year`).
+    ///   - completion: A closure that returns the calculated daily average steps for the specified period.
+    func getAverageSteps(for period: TimePeriod, completion: @escaping (Int) -> Void) {
         let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        
         let calendar = Calendar.current
         let now = Date()
-        let startDate = calendar.date(byAdding: .day, value: -7, to: now)!
-        
         var interval = DateComponents()
-        interval.day = 1
+        var startDate: Date
         
+        // Set the start date and interval based on the specified period
+        switch period {
+        case .week:
+            interval.day = 1
+            startDate = calendar.date(byAdding: .day, value: -7, to: now)!
+        case .month:
+            interval.day = 1 // Daily intervals for a month
+            startDate = calendar.date(byAdding: .month, value: -1, to: now)!
+        case .year:
+            interval.day = 1 // Daily intervals to accurately calculate daily average over a year
+            startDate = calendar.date(byAdding: .year, value: -1, to: now)!
+        }
+        
+        // Create a statistics collection query for the specified period
         let query = HKStatisticsCollectionQuery(
             quantityType: stepType,
             quantitySamplePredicate: nil,
@@ -127,6 +173,7 @@ class HomeViewModel: ObservableObject {
             var totalSteps: Int = 0
             var dayCount: Int = 0
             
+            // Enumerate through the statistics and calculate the total steps and count of days
             collection?.enumerateStatistics(from: startDate, to: now) { statistics, _ in
                 if let sum = statistics.sumQuantity() {
                     totalSteps += Int(sum.doubleValue(for: HKUnit.count()))
@@ -134,11 +181,70 @@ class HomeViewModel: ObservableObject {
                 }
             }
             
+            // Calculate the daily average steps for the specified period
             DispatchQueue.main.async {
-                self.averageSteps = dayCount > 0 ? totalSteps / dayCount : 0
+                let average = dayCount > 0 ? totalSteps / dayCount : 0
+                completion(average)
+            }
+        }
+        
+        // Execute the query
+        healthStore.execute(query)
+    }
+    
+    /// Fetch steps data for the specified period and store in appropriate property.
+    func fetchData(for period: TimePeriod, completion: @escaping ([StepEntry]) -> Void) {
+        let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        let calendar = Calendar.current
+        let now = Date()
+        var interval = DateComponents()
+        var startDate: Date
+        
+        switch period {
+        case .week:
+            interval.day = 1
+            startDate = calendar.date(byAdding: .day, value: -7, to: now)!
+        case .month:
+            interval.weekOfMonth = 1
+            startDate = calendar.date(byAdding: .month, value: -1, to: now)!
+        case .year:
+            interval.month = 1
+            startDate = calendar.date(byAdding: .year, value: -1, to: now)!
+        }
+        
+        let query = HKStatisticsCollectionQuery(
+            quantityType: stepType,
+            quantitySamplePredicate: nil,
+            options: .cumulativeSum,
+            anchorDate: startDate,
+            intervalComponents: interval
+        )
+        
+        query.initialResultsHandler = { _, collection, _ in
+            var stepEntries: [StepEntry] = []
+            collection?.enumerateStatistics(from: startDate, to: now) { statistics, _ in
+                let steps = statistics.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0
+                let label = self.getLabel(for: statistics.startDate, period: period)
+                stepEntries.append(StepEntry(label: label, steps: Int(steps)))
+            }
+            DispatchQueue.main.async{
+                completion(stepEntries)
             }
         }
         
         healthStore.execute(query)
+        
+    }
+    
+    /// Get label for each entry based on the period
+    private func getLabel(for date: Date, period: TimePeriod) -> String {
+        let dateFormatter = DateFormatter()
+        switch period {
+        case .week, .month:
+            dateFormatter.dateFormat = "d"
+        case .year:
+            dateFormatter.dateFormat = "MMM"
+        }
+        return dateFormatter.string(from: date)
     }
 }

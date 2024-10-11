@@ -19,7 +19,10 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 40)
                     .offset(y:-5)
-            }.padding(.horizontal, 20)
+            }
+            .padding(.vertical)
+            .padding(.horizontal, 20)
+            
             List {
                 VStack(spacing: 10) {
                     StepsWidget().environmentObject(viewModel)
@@ -31,18 +34,19 @@ struct HomeView: View {
                     .padding(.horizontal)
                     
                     StepComparisonView().environmentObject(viewModel)
+                    
+                    StepChartWidget().environmentObject(viewModel)
                 }
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
-                
             }
             .frame(width: screenWidth)
             .scrollContentBackground(.hidden)
             .refreshable {
-                viewModel.fetchDailyData()
+                viewModel.fetchAllData()
             }
-            .onAppear {
-                viewModel.fetchDailyData()
+            .onAppear{
+                viewModel.fetchAllData()
             }
         }
     }
