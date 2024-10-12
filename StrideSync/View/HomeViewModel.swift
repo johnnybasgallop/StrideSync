@@ -199,17 +199,22 @@ class HomeViewModel: ObservableObject {
         let now = Date()
         var interval = DateComponents()
         var startDate: Date
+        var endDate: Date
         
         switch period {
         case .week:
             interval.day = 1
-            startDate = calendar.date(byAdding: .day, value: -7, to: now)!
+            startDate = calendar.date(byAdding: .day, value: -7, to: now)! // Start from 7 days ago
+            endDate = calendar.date(byAdding: .day, value: -1, to: now)! // End at yesterday
         case .month:
-            interval.weekOfMonth = 1
+            interval.day = 1
             startDate = calendar.date(byAdding: .month, value: -1, to: now)!
+            endDate = now
         case .year:
             interval.month = 1
-            startDate = calendar.date(byAdding: .year, value: -1, to: now)!
+            // Start date should be January 1st of the current year
+            startDate = calendar.date(from: Calendar.current.dateComponents([.year], from: now))!
+            endDate = now
         }
         
         let query = HKStatisticsCollectionQuery(
@@ -222,28 +227,28 @@ class HomeViewModel: ObservableObject {
         
         query.initialResultsHandler = { _, collection, _ in
             var stepEntries: [StepEntry] = []
-            collection?.enumerateStatistics(from: startDate, to: now) { statistics, _ in
+            collection?.enumerateStatistics(from: startDate, to: endDate) { statistics, _ in
                 let steps = statistics.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0
                 let label = self.getLabel(for: statistics.startDate, period: period)
                 stepEntries.append(StepEntry(label: label, steps: Int(steps)))
             }
-            DispatchQueue.main.async{
+            DispatchQueue.main.async {
                 completion(stepEntries)
             }
         }
         
         healthStore.execute(query)
-        
     }
     
-    /// Get label for each entry based on the period
     private func getLabel(for date: Date, period: TimePeriod) -> String {
         let dateFormatter = DateFormatter()
         switch period {
-        case .week, .month:
-            dateFormatter.dateFormat = "d"
+        case .week:
+            dateFormatter.dateFormat = "EEE" // Use short day names, e.g., "Mon", "Tue"
+        case .month:
+            dateFormatter.dateFormat = "d" // Use numeric days for month
         case .year:
-            dateFormatter.dateFormat = "MMM"
+            dateFormatter.dateFormat = "MMM" // Use short month names, e.g., "Jan", "Feb"
         }
         return dateFormatter.string(from: date)
     }
