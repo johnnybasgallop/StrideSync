@@ -6,7 +6,7 @@ struct FlightsWidget: View {
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(.brandGreen)
+                .fill(.brandGreen.gradient)
                 .frame(width: (screenWidth - 45) / 2, height: 175)
             
             VStack(alignment: .leading){

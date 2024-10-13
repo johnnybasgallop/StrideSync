@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0C05BB2CBBFF400016CBEF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4312372CBAE24E0070F9B4 /* WidgetKit.framework */; };
+		CA0C05BC2CBBFF400016CBEF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4312392CBAE24E0070F9B4 /* SwiftUI.framework */; };
+		CA0C05C12CBBFF400016CBEF /* StrideSyncWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C05C02CBBFF400016CBEF /* StrideSyncWidget.swift */; };
+		CA0C05C32CBBFF410016CBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0C05C22CBBFF410016CBEF /* Assets.xcassets */; };
+		CA0C05C72CBBFF410016CBEF /* StrideSyncWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CA0C05BA2CBBFF400016CBEF /* StrideSyncWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA4312262CB54F7C0070F9B4 /* DistanceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */; };
 		CA4312282CB6C7180070F9B4 /* FlightsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */; };
 		CA43122A2CB721C60070F9B4 /* StepComparisonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */; };
@@ -22,13 +27,44 @@
 		CA97A8A22CB453A000A36B70 /* StepsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97A8A12CB453A000A36B70 /* StepsWidget.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CA0C05C52CBBFF410016CBEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA97A8802CB41F5100A36B70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA0C05B92CBBFF400016CBEF;
+			remoteInfo = StrideSyncWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CA43124D2CBAE2500070F9B4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA0C05C72CBBFF410016CBEF /* StrideSyncWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		CA0C05BA2CBBFF400016CBEF /* StrideSyncWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StrideSyncWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0C05C02CBBFF400016CBEF /* StrideSyncWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrideSyncWidget.swift; sourceTree = "<group>"; };
+		CA0C05C22CBBFF410016CBEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA0C05C42CBBFF410016CBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0C05CB2CBC00160016CBEF /* StrideSyncWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StrideSyncWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceWidget.swift; sourceTree = "<group>"; };
 		CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsWidget.swift; sourceTree = "<group>"; };
 		CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepComparisonWidget.swift; sourceTree = "<group>"; };
 		CA43122B2CB94B2F0070F9B4 /* StepChartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepChartWidget.swift; sourceTree = "<group>"; };
 		CA43122D2CB953030070F9B4 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		CA43122F2CB9531C0070F9B4 /* StepEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepEntry.swift; sourceTree = "<group>"; };
+		CA4312372CBAE24E0070F9B4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CA4312392CBAE24E0070F9B4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CA97A8882CB41F5100A36B70 /* StrideSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrideSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA97A88B2CB41F5100A36B70 /* StrideSyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrideSyncApp.swift; sourceTree = "<group>"; };
 		CA97A88D2CB41F5100A36B70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +77,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA0C05B72CBBFF400016CBEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0C05BC2CBBFF400016CBEF /* SwiftUI.framework in Frameworks */,
+				CA0C05BB2CBBFF400016CBEF /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA97A8852CB41F5100A36B70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,10 +96,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA0C05BD2CBBFF400016CBEF /* StrideSyncWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CA0C05C02CBBFF400016CBEF /* StrideSyncWidget.swift */,
+				CA0C05C22CBBFF410016CBEF /* Assets.xcassets */,
+				CA0C05C42CBBFF410016CBEF /* Info.plist */,
+			);
+			path = StrideSyncWidget;
+			sourceTree = "<group>";
+		};
+		CA4312362CBAE24E0070F9B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA4312372CBAE24E0070F9B4 /* WidgetKit.framework */,
+				CA4312392CBAE24E0070F9B4 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA97A87F2CB41F5100A36B70 = {
 			isa = PBXGroup;
 			children = (
+				CA0C05CB2CBC00160016CBEF /* StrideSyncWidgetExtension.entitlements */,
 				CA97A88A2CB41F5100A36B70 /* StrideSync */,
+				CA0C05BD2CBBFF400016CBEF /* StrideSyncWidget */,
+				CA4312362CBAE24E0070F9B4 /* Frameworks */,
 				CA97A8892CB41F5100A36B70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				CA97A8882CB41F5100A36B70 /* StrideSync.app */,
+				CA0C05BA2CBBFF400016CBEF /* StrideSyncWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +191,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA0C05B92CBBFF400016CBEF /* StrideSyncWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0C05C82CBBFF410016CBEF /* Build configuration list for PBXNativeTarget "StrideSyncWidgetExtension" */;
+			buildPhases = (
+				CA0C05B62CBBFF400016CBEF /* Sources */,
+				CA0C05B72CBBFF400016CBEF /* Frameworks */,
+				CA0C05B82CBBFF400016CBEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StrideSyncWidgetExtension;
+			productName = StrideSyncWidgetExtension;
+			productReference = CA0C05BA2CBBFF400016CBEF /* StrideSyncWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CA97A8872CB41F5100A36B70 /* StrideSync */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA97A8972CB41F5200A36B70 /* Build configuration list for PBXNativeTarget "StrideSync" */;
@@ -130,10 +215,12 @@
 				CA97A8842CB41F5100A36B70 /* Sources */,
 				CA97A8852CB41F5100A36B70 /* Frameworks */,
 				CA97A8862CB41F5100A36B70 /* Resources */,
+				CA43124D2CBAE2500070F9B4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA0C05C62CBBFF410016CBEF /* PBXTargetDependency */,
 			);
 			name = StrideSync;
 			productName = StrideSync;
@@ -150,6 +237,9 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					CA0C05B92CBBFF400016CBEF = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					CA97A8872CB41F5100A36B70 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -169,11 +259,20 @@
 			projectRoot = "";
 			targets = (
 				CA97A8872CB41F5100A36B70 /* StrideSync */,
+				CA0C05B92CBBFF400016CBEF /* StrideSyncWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA0C05B82CBBFF400016CBEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0C05C32CBBFF410016CBEF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA97A8862CB41F5100A36B70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -186,6 +285,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA0C05B62CBBFF400016CBEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0C05C12CBBFF400016CBEF /* StrideSyncWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA97A8842CB41F5100A36B70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,7 +313,76 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CA0C05C62CBBFF410016CBEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA0C05B92CBBFF400016CBEF /* StrideSyncWidgetExtension */;
+			targetProxy = CA0C05C52CBBFF410016CBEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		CA0C05C92CBBFF410016CBEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = StrideSyncWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DB62R67D27;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StrideSyncWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StrideSyncWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSyncApp.StrideSyncWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA0C05CA2CBBFF410016CBEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = StrideSyncWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DB62R67D27;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StrideSyncWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StrideSyncWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSyncApp.StrideSyncWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		CA97A8952CB41F5200A36B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -324,13 +500,14 @@
 		CA97A8982CB41F5200A36B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StrideSync/StrideSync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StrideSync/Preview Content\"";
-				DEVELOPMENT_TEAM = 3HRQXW5DML;
+				DEVELOPMENT_TEAM = DB62R67D27;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -350,7 +527,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSync;
+				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSyncApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -363,13 +540,14 @@
 		CA97A8992CB41F5200A36B70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StrideSync/StrideSync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StrideSync/Preview Content\"";
-				DEVELOPMENT_TEAM = 3HRQXW5DML;
+				DEVELOPMENT_TEAM = DB62R67D27;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -389,7 +567,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSync;
+				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSyncApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -402,6 +580,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA0C05C82CBBFF410016CBEF /* Build configuration list for PBXNativeTarget "StrideSyncWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0C05C92CBBFF410016CBEF /* Debug */,
+				CA0C05CA2CBBFF410016CBEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA97A8832CB41F5100A36B70 /* Build configuration list for PBXProject "StrideSync" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

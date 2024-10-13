@@ -6,7 +6,7 @@ struct StepsWidget: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(.brandPurple)
+                .fill(.brandPurple.gradient)
                 .frame(height: 125)
             
             VStack(alignment: .leading,spacing: 10){

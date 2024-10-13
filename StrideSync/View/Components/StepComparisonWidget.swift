@@ -7,7 +7,7 @@ struct StepComparisonView: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(.brandCharcoal)
+                .fill(.brandCharcoal.gradient)
                 .frame(height: 240)
             
             VStack(alignment: .leading, spacing: 15){

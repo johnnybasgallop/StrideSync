@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 import HealthKit
 import SwiftUI
 
@@ -52,6 +53,7 @@ class HomeViewModel: ObservableObject {
         }
         self.getAverageSteps(for: .month){average in
             self.averageStepsMonth = average
+            self.saveToSharedDefaults()
         }
         
         self.fetchData(for: .year) { steps in
@@ -60,6 +62,7 @@ class HomeViewModel: ObservableObject {
         self.getAverageSteps(for: .year){average in
             self.averageStepsYear = average
         }
+        
     }
     
     /// Requests authorization and retrieves daily health data for steps, distance, flights climbed, and average steps.
@@ -251,5 +254,15 @@ class HomeViewModel: ObservableObject {
             dateFormatter.dateFormat = "MMM" // Use short month names, e.g., "Jan", "Feb"
         }
         return dateFormatter.string(from: date)
+    }
+    
+    func saveToSharedDefaults() {
+        let sharedDefaults = UserDefaults(suiteName: "group.basgallop.StrideSyncApp")
+        sharedDefaults?.set(self.steps, forKey: "totalSteps")
+        sharedDefaults?.set(self.distance, forKey: "distance")
+        sharedDefaults?.set(self.flightsClimbed, forKey: "flightsClimbed")
+        sharedDefaults?.set(self.averageStepsMonth, forKey: "averageSteps")
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

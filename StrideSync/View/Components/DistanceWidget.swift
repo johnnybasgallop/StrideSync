@@ -6,7 +6,7 @@ struct DistanceWidget: View {
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(.brandBlue)
+                .fill(.brandBlue.gradient)
                 .frame(width: (screenWidth - 45) / 2, height: 175)
             
             VStack(alignment: .leading){
