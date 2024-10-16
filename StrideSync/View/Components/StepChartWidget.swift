@@ -14,14 +14,13 @@ struct StepChartWidget: View {
                 .frame(height: 400)
             
             VStack(alignment: .leading) {
-                // Picker to select time period (week, month, year)
                 Picker("Time Period", selection: $selectedPeriod) {
                     ForEach(TimePeriod.allCases, id: \.self) { period in
                         Text(period.rawValue)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                // Display the average steps for the selected period
+                
                 Text("Average")
                     .font(.title2)
                     .foregroundColor(.gray)
@@ -31,7 +30,7 @@ struct StepChartWidget: View {
                     .font(.system(size: 36, weight: .bold))
                     .padding(.bottom, 4)
                 
-                // Display the Chart with real data
+                
                 Chart(dataForSelectedPeriod()) {
                     BarMark(
                         x: .value("Label", $0.label),
@@ -53,7 +52,7 @@ struct StepChartWidget: View {
         }.padding(.horizontal)
     }
     
-    // Calculate the average step count for the selected period
+    
     private func averageSteps(for period: TimePeriod) -> Int {
         switch period{
         case .week:
@@ -68,7 +67,7 @@ struct StepChartWidget: View {
         
     }
     
-    // Get the appropriate data for the selected period
+    
     private func dataForSelectedPeriod() -> [StepEntry] {
         switch selectedPeriod {
         case .week:
@@ -80,7 +79,7 @@ struct StepChartWidget: View {
         }
     }
     
-    // Determine x-axis labels for the current time period
+    
     private func xAxisLabels() -> [String] {
         switch selectedPeriod {
         case .week:
@@ -92,7 +91,7 @@ struct StepChartWidget: View {
         }
     }
     
-    // Return the color for the selected period
+    
     private func getColor(for period: TimePeriod) -> Color {
         switch period {
         case .week:

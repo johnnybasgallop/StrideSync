@@ -1,10 +1,3 @@
-//
-//  StepEntry.swift
-//  StrideSync
-//
-//  Created by johnny basgallop on 11/10/2024.
-//
-
 import Foundation
 
 // Step data model for individual entries

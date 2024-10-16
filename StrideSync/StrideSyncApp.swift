@@ -1,9 +1,3 @@
-//
-//  StrideSyncApp.swift
-//  StrideSync
-//
-//  Created by johnny basgallop on 07/10/2024.
-//
 
 import SwiftUI
 

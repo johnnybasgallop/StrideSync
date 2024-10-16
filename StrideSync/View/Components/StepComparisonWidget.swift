@@ -15,7 +15,7 @@ struct StepComparisonView: View {
                     .foregroundStyle(.white)
                     .font(.callout)
                     .fontWeight(.semibold)
-                    
+                
                 VStack(alignment: .leading, spacing: 10){
                     HStack {
                         Text("\(viewModel.steps.formatted())")
@@ -53,10 +53,10 @@ struct StepComparisonView: View {
             .padding(.bottom)
         }
         .padding(.horizontal)
-       
+        
         
     }
-
+    
     func barWidth(for steps: Int) -> CGFloat {
         let maxSteps = max(viewModel.steps, viewModel.averageStepsMonth)
         let maxWidth: CGFloat = 300

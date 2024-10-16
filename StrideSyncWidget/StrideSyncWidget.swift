@@ -1,9 +1,3 @@
-//
-//  StrideSyncWidget.swift
-//  StrideSyncWidget
-//
-//  Created by johnny basgallop on 12/10/2024.
-//
 
 import WidgetKit
 import SwiftUI
