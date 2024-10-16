@@ -118,12 +118,12 @@ struct MediumWidget : View {
                 
                 Spacer()
                 
-                Text("4.3km")
+                Text("\(String(format: "%.1f", entry.distance))km")
                     .foregroundStyle(.brandCharcoal)
                     .font(.system(size: 14, weight: .bold))
                 
                 HStack(spacing: 4){
-                    Text("8")
+                    Text("\(entry.flightsClimbed)")
                         .foregroundStyle(.brandCharcoal)
                         .font(.system(size: 14, weight: .bold))
                     

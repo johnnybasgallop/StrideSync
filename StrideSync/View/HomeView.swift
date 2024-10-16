@@ -47,7 +47,9 @@ struct HomeView: View {
                 viewModel.fetchAllData()
             }
             .onAppear{
-                viewModel.fetchAllData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75){
+                    viewModel.fetchAllData()
+                }
             }
         }
     }
