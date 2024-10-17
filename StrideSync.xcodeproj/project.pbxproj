@@ -12,6 +12,8 @@
 		CA0C05C12CBBFF400016CBEF /* StrideSyncWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C05C02CBBFF400016CBEF /* StrideSyncWidget.swift */; };
 		CA0C05C32CBBFF410016CBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0C05C22CBBFF410016CBEF /* Assets.xcassets */; };
 		CA0C05C72CBBFF410016CBEF /* StrideSyncWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CA0C05BA2CBBFF400016CBEF /* StrideSyncWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA14B2262CC1AE7E00377739 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CA14B2252CC1AE7E00377739 /* PrivacyInfo.xcprivacy */; };
+		CA14B2272CC1AE7E00377739 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CA14B2252CC1AE7E00377739 /* PrivacyInfo.xcprivacy */; };
 		CA4312262CB54F7C0070F9B4 /* DistanceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */; };
 		CA4312282CB6C7180070F9B4 /* FlightsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */; };
 		CA43122A2CB721C60070F9B4 /* StepComparisonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */; };
@@ -57,6 +59,8 @@
 		CA0C05C22CBBFF410016CBEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA0C05C42CBBFF410016CBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0C05CB2CBC00160016CBEF /* StrideSyncWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StrideSyncWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CA14B2242CC1AC5900377739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CA14B2252CC1AE7E00377739 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CA4312252CB54F7C0070F9B4 /* DistanceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceWidget.swift; sourceTree = "<group>"; };
 		CA4312272CB6C7180070F9B4 /* FlightsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsWidget.swift; sourceTree = "<group>"; };
 		CA4312292CB721C60070F9B4 /* StepComparisonWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepComparisonWidget.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		CA97A87F2CB41F5100A36B70 = {
 			isa = PBXGroup;
 			children = (
+				CA14B2252CC1AE7E00377739 /* PrivacyInfo.xcprivacy */,
 				CA0C05CB2CBC00160016CBEF /* StrideSyncWidgetExtension.entitlements */,
 				CA97A88A2CB41F5100A36B70 /* StrideSync */,
 				CA0C05BD2CBBFF400016CBEF /* StrideSyncWidget */,
@@ -138,6 +143,7 @@
 		CA97A88A2CB41F5100A36B70 /* StrideSync */ = {
 			isa = PBXGroup;
 			children = (
+				CA14B2242CC1AC5900377739 /* Info.plist */,
 				CA97A89A2CB451DB00A36B70 /* View */,
 				CA97A89B2CB451E300A36B70 /* Model */,
 				CA97A88B2CB41F5100A36B70 /* StrideSyncApp.swift */,
@@ -269,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA14B2272CC1AE7E00377739 /* PrivacyInfo.xcprivacy in Resources */,
 				CA0C05C32CBBFF410016CBEF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA14B2262CC1AE7E00377739 /* PrivacyInfo.xcprivacy in Resources */,
 				CA97A8942CB41F5200A36B70 /* Preview Assets.xcassets in Resources */,
 				CA97A8902CB41F5200A36B70 /* Assets.xcassets in Resources */,
 			);
@@ -435,6 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -490,6 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -511,7 +521,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StrideSync/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need you health data to properly display it within the app";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This application needs permission to send and receive health data updates";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -520,9 +533,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -530,10 +542,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSyncApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -551,7 +564,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StrideSync/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need you health data to properly display it within the app";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This application needs permission to send and receive health data updates";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -560,9 +576,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -570,10 +585,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.basgallop.StrideSyncApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -2,12 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSExtension</key>
-	<dict>
-		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.widgetkit-extension</string>
-	</dict>
 	<key>NSExtensionFileProviderDocumentGroup</key>
-	<string>This widget uses app groups to communicate with the parent application</string>
+	<string>This application uses app groups to transmit information between the main app and the widget</string>
 </dict>
 </plist>

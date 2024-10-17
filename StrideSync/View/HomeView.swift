@@ -42,6 +42,7 @@ struct HomeView: View {
             }
             .frame(width: screenWidth)
             .scrollContentBackground(.hidden)
+            .scrollIndicators(.hidden)
             
             .refreshable {
                 viewModel.fetchAllData()
